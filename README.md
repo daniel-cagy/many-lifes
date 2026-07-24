@@ -4,13 +4,15 @@ This repository is a collection of Conway's Game of Life implementations in
 different programming languages.
 
 The goal is to keep each implementation small, readable, and easy to build from
-its own directory. For now, the repository contains only the C version.
+its own directory. The repository currently contains a terminal C version and a
+graphical C version built with raylib.
 
 ## Implementations
 
 | Language | Directory | Status |
 | --- | --- | --- |
 | C | [`c/`](c/) | Available |
+| C + raylib | [`c-raylib/`](c-raylib/) | Available |
 
 ## What Is Conway's Game of Life?
 
@@ -34,12 +36,21 @@ the pattern stops changing.
 
 See [`c/README.md`](c/README.md) for build and run instructions.
 
+The C + raylib implementation is a graphical version. It opens a fullscreen
+window, supports mouse editing, random grid generation, clearing, pausing, and
+speed controls.
+
+See [`c-raylib/README.md`](c-raylib/README.md) for build and run instructions.
+
 ## Repository Layout
 
 ```text
 .
 ├── README.md
-└── c/
+├── c/
+│   ├── README.md
+│   └── life.c
+└── c-raylib/
     ├── README.md
     └── life.c
 ```
