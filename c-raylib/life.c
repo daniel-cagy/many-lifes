@@ -12,16 +12,13 @@ int num_neighbors(int i, int j, int rows, int cols, int grid[rows][cols]);
 int main() {
     srand(time(NULL));
 
-    Color dark_green = {20, 90, 33, 255};
-    Color dark_grey = {29, 29, 29, 255};
-
-    const int settings_fps = 60;
+    const int SETTINGS_FPS = 60;
     int gameplay_fps = 6;
 
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "Hello Life!!");
     ToggleBorderlessWindowed();
     ToggleFullscreen();
-    SetTargetFPS(settings_fps);
+    SetTargetFPS(SETTINGS_FPS);
 
     const int SCREEN_WIDTH = GetScreenWidth();
     const int SCREEN_HEIGHT = GetScreenHeight();
@@ -42,7 +39,7 @@ int main() {
         if (IsKeyPressed(KEY_ENTER)) {
             if (is_running) {
                 is_running = 0;
-                SetTargetFPS(settings_fps);
+                SetTargetFPS(SETTINGS_FPS);
             }
             else {
                 is_running = 1;
@@ -99,7 +96,12 @@ int main() {
 
         BeginDrawing();
         ClearBackground(BLACK);
-        draw_grid(NUM_ROWS, NUM_COLS, grid, dark_green, dark_grey, CELL_SIZE);
+        if (is_running) {
+            draw_grid(NUM_ROWS, NUM_COLS, grid, GREEN, DARKGRAY, CELL_SIZE);
+        }
+        else {
+            draw_grid(NUM_ROWS, NUM_COLS, grid, GREEN, GRAY, CELL_SIZE);
+        }
         EndDrawing();
 
         for (int i = 0; i < NUM_ROWS; i++) {
